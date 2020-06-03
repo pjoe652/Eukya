@@ -1,0 +1,28 @@
+header {
+  position: fixed;
+  z-index: 100;
+  left: 0;
+  right: 0;
+  height: 6rem;
+  background-color:black;
+
+  .title-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    padding-top: 1.5rem;
+
+    .title {
+      font-size: 3rem;
+      color: white;
+      font-weight: bolder;
+    }
+  
+    .subcase {
+      font-size: 1.5rem;
+      font-weight: lighter;
+      color: white;
+    }
+  }
+}

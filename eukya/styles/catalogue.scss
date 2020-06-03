@@ -1,0 +1,45 @@
+.catalogue-container {
+  display: flex;
+  position: absolute;
+  padding-top: 3rem;
+  width: 100%;
+  background-color: black;
+
+  .category {
+    background-color: black;
+    width: calc(100% / 3);
+    display: flex;
+    height: 45rem;
+
+    a {
+      position: absolute;
+      z-index: 1;
+      color: white;
+      justify-content: center;
+    }
+
+    .zoom-container {
+      height: 45rem;
+      background-color: black;
+      overflow: hidden;
+      opacity: 0.6;
+      transition: opacity 1s;
+
+      &:hover {
+        opacity: 0;
+      }
+
+      img {
+        height: 45rem;
+        object-fit: cover;
+        object-position: center;
+        transition: all 1s;
+  
+        &:hover {
+          transform: scale(1.1);
+        }
+      }
+    }
+  }
+
+}

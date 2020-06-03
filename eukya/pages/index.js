@@ -1,9 +1,17 @@
 import Head from 'next/head'
 import Router from 'next/router'
 
+const showcaseImages = ['/showcase1.png', '/showcase2.png', '/showcase3.png']
+
 class Home extends React.Component {
-  state = {
-    hoveredItem: null
+  constructor(props) {
+    super(props)
+    this.state = {
+      hoveredItem: null,
+      imageCycle: 0,
+      nextImageNum: 1,
+      prevImageNum: 2
+    }
   }
 
   onCategoryHover = category => {
@@ -17,7 +25,7 @@ class Home extends React.Component {
   }
 
   render() {
-    const { hoveredItem } = this.state
+    const { hoveredItem, imageCycle, nextImageCycle } = this.state
 
     return (
       <React.Fragment>
@@ -73,10 +81,22 @@ class Home extends React.Component {
           <div className="showcase-container">
             <a>Showcase</a>
             <div className="showcase">
-              <img src="/showcase1.png"/>
+              <div className="showcase-image-container">
+                <div className="carousel">
+                  <img src={showcaseImages[0]} className="current"/>
+                  <img src={showcaseImages[1]} className="next"/>
+                  <img src={showcaseImages[2]} className="previous"/>
+                </div>
+                <div className="image-cycle-container">
+                  <a/>
+                  <a/>
+                  <a/>
+                </div>
+              </div>
+              
               <div className="showcase-description-container">
                 <div className="showcase-description">
-                  Well this product is great isn't it! Well this product is great isn't it! Well this product is great isn't it! Well this product is great isn't it! Well this product is great isn't it! Well this product is great isn't it! Well this product is great isn't it! Well this product is great isn't it! Well this product is great isn't it! Well this product is great isn't it! Well this product is great isn't it! Well this product is great isn't it! Well this product is great isn't it! Well this product is great isn't it! Well this product is great isn't it! Well this product is great isn't it! Well this product is great isn't it! Well this product is great isn't it! Well this product is great isn't it! Well this product is great isn't it! Well this product is great isn't it! Well this product is great isn't it! Well this product is great isn't it! Well this product is great isn't it! Well this product is great isn't it! Well this product is great isn't it! 
+                  Well this product is great isn't it! Well this product is great isn't it! Well this product is great isn't it! 
                 </div>
               </div>
             </div>

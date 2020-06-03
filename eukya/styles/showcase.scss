@@ -35,9 +35,43 @@
       }
     }
 
-    img {
-      height: 40rem;
-      object-fit: cover;
+    .showcase-image-container { 
+      .carousel {
+        display: flex;
+        flex-direction: row;
+        overflow: hidden;
+        height: 40rem;
+        width: 60rem;
+
+        img {
+          height: 40rem;
+          width: 60rem;
+          object-fit: cover;
+
+          &.previous {
+            left: -120rem;
+          }
+
+          &.next {
+            left: -60rem;
+          }
+        }
+      }
+
+      .image-cycle-container {
+        display: flex;
+        width: 100%;
+        flex-direction: row;
+        justify-content: center;
+
+        a {
+          margin: 1rem;
+          height: 1rem;
+          width: 1rem;
+          border-radius: 50%;
+          background-color: white;
+        }
+      }
     }
   }
 }

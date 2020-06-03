@@ -12,34 +12,34 @@
     height: 45rem;
 
     a {
+      width: calc(100% / 3);
+      display: flex;
       position: absolute;
       z-index: 1;
       color: white;
+      align-self: center;
       justify-content: center;
+      font-weight: lighter;
+      font-size: xxx-large;
     }
 
     .zoom-container {
+      position: relative;
       height: 45rem;
-      background-color: black;
       overflow: hidden;
-      opacity: 0.6;
-      transition: opacity 1s;
-
-      &:hover {
-        opacity: 0;
-      }
 
       img {
         height: 45rem;
         object-fit: cover;
         object-position: center;
+        opacity: 0.4;
         transition: all 1s;
   
-        &:hover {
+        &.selected {
+          opacity: 1;
           transform: scale(1.1);
         }
       }
     }
   }
-
 }

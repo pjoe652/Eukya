@@ -27,15 +27,17 @@ class Home extends React.Component {
           <link href='https://fonts.googleapis.com/css?family=Sofia' rel='stylesheet'/>
           <script src="https://kit.fontawesome.com/ca7ff47d1e.js" crossOrigin="anonymous"/>
         </Head>
-        <header>
-          <div className="title-container">
-            <a className="title">
-              EUKYA
-            </a>
-            <a className="subcase">
-              furniture
-            </a>
-          </div>
+        <div className="main-container">
+          <header>
+            <div className="title-container">
+              <a className="title">
+                EUKYA
+              </a>
+              <a className="subcase">
+                furniture
+              </a>
+            </div>
+          </header>
           <div className="catalogue-container">
             <div className="category" 
               onClick={() => this.onCategoryClick('restaurant')}
@@ -68,8 +70,18 @@ class Home extends React.Component {
               </div>
             </div>
           </div>
-        </header>
-  
+          <div className="showcase-container">
+            <a>Showcase</a>
+            <div className="showcase">
+              <img src="/showcase1.png"/>
+              <div className="showcase-description-container">
+                <div className="showcase-description">
+                  Well this product is great isn't it! Well this product is great isn't it! Well this product is great isn't it! Well this product is great isn't it! Well this product is great isn't it! Well this product is great isn't it! Well this product is great isn't it! Well this product is great isn't it! Well this product is great isn't it! Well this product is great isn't it! Well this product is great isn't it! Well this product is great isn't it! Well this product is great isn't it! Well this product is great isn't it! Well this product is great isn't it! Well this product is great isn't it! Well this product is great isn't it! Well this product is great isn't it! Well this product is great isn't it! Well this product is great isn't it! Well this product is great isn't it! Well this product is great isn't it! Well this product is great isn't it! Well this product is great isn't it! Well this product is great isn't it! Well this product is great isn't it! 
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </React.Fragment>
     )
   }

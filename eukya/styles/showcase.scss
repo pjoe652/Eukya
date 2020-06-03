@@ -1,0 +1,43 @@
+.showcase-container {
+  display: flex;
+  flex-direction: column;
+  background-color: black;
+  height: 50rem;
+  width: 100%;
+  padding-top: 2rem;
+
+  a {
+    display: flex;
+    font-size: xxx-large;
+    font-weight: lighter;
+    justify-content: center;
+    color: white;
+  }
+
+  .showcase {
+    padding: 2rem 10rem 0 10rem;
+    display: flex;
+    width: calc(100% - 20rem);
+    justify-content: center;
+
+    .showcase-description-container {
+      font-size: x-large;
+      font-weight: lighter;
+      color: white;
+      margin-left: 2rem;
+      border: solid 1px white;
+      overflow-y: scroll;
+      overflow-x: hidden;
+      height: 40rem;
+
+      .showcase-description {
+        padding: 2rem;
+      }
+    }
+
+    img {
+      height: 40rem;
+      object-fit: cover;
+    }
+  }
+}

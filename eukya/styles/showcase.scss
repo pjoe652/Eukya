@@ -19,6 +19,7 @@
     display: flex;
     width: calc(100% - 20rem);
     justify-content: center;
+    flex-direction: column;
 
     .showcase-description-container {
       font-size: x-large;
@@ -35,41 +36,43 @@
       }
     }
 
-    .showcase-image-container { 
-      .carousel {
+    .showcase-image-row {
+      display: flex;
+      flex-direction: row;
+
+      .showcase-image-container { 
         display: flex;
-        flex-direction: row;
+        justify-content: center;
         overflow: hidden;
-        height: 40rem;
+        height: 20rem;
         width: 60rem;
-
+  
         img {
-          height: 40rem;
-          width: 60rem;
+          height: 20rem;
           object-fit: cover;
-
+  
           &.previous {
             left: -120rem;
           }
-
+  
           &.next {
             left: -60rem;
           }
         }
-      }
-
-      .image-cycle-container {
-        display: flex;
-        width: 100%;
-        flex-direction: row;
-        justify-content: center;
-
-        a {
-          margin: 1rem;
-          height: 1rem;
-          width: 1rem;
-          border-radius: 50%;
-          background-color: white;
+  
+        .image-cycle-container {
+          display: flex;
+          width: 100%;
+          flex-direction: row;
+          justify-content: center;
+  
+          a {
+            margin: 1rem;
+            height: 1rem;
+            width: 1rem;
+            border-radius: 50%;
+            background-color: white;
+          }
         }
       }
     }

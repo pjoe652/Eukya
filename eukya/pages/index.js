@@ -1,8 +1,6 @@
 import Head from 'next/head'
 import Router from 'next/router'
 
-const showcaseImages = ['/showcase1.png', '/showcase2.png', '/showcase3.png']
-
 class Home extends React.Component {
   constructor(props) {
     super(props)
@@ -52,7 +50,7 @@ class Home extends React.Component {
               onMouseEnter={() => this.onCategoryHover('restaurant')}
               onMouseLeave={() => this.onCategoryHover(null)}
               >
-              <a>Restaurant</a>
+              <a>Chairs & Barstools</a>
               <div className="zoom-container">
                 <img className={`${hoveredItem === 'restaurant' ? 'selected' : ''}`} src="/restaurant.jpg"/>
               </div>
@@ -62,7 +60,7 @@ class Home extends React.Component {
               onMouseEnter={() => this.onCategoryHover('hotel')}
               onMouseLeave={() => this.onCategoryHover(null)}
             >
-              <a>Hotel</a>
+              <a>Tables & Bases</a>
               <div className="zoom-container">
                 <img className={`${hoveredItem === 'hotel' ? 'selected' : ''}`} src="/hotel.jpg"/>
               </div>
@@ -72,7 +70,7 @@ class Home extends React.Component {
               onMouseEnter={() => this.onCategoryHover('banquet')}
               onMouseLeave={() => this.onCategoryHover(null)}
             >
-              <a>Banquet</a>
+              <a>Booths</a>
               <div className="zoom-container">
                 <img className={`${hoveredItem === 'banquet' ? 'selected' : ''}`} src="/banquet.jpg"/>
               </div>
@@ -81,22 +79,26 @@ class Home extends React.Component {
           <div className="showcase-container">
             <a>Showcase</a>
             <div className="showcase">
-              <div className="showcase-image-container">
-                <div className="carousel">
-                  <img src={showcaseImages[0]} className="current"/>
-                  <img src={showcaseImages[1]} className="next"/>
-                  <img src={showcaseImages[2]} className="previous"/>
+              <div className="showcase-image-row">
+                <div className="showcase-image-container">
+                  <img src="/applebees.png"/>
                 </div>
-                <div className="image-cycle-container">
-                  <a/>
-                  <a/>
-                  <a/>
+                <div className="showcase-image-container">
+                  <img src="/carlsjr.png"/>
+                </div>
+                <div className="showcase-image-container">
+                  <img src="/dennys.png"/>
                 </div>
               </div>
-              
-              <div className="showcase-description-container">
-                <div className="showcase-description">
-                  Well this product is great isn't it! Well this product is great isn't it! Well this product is great isn't it! 
+              <div className="showcase-image-row">
+                <div className="showcase-image-container">
+                  <img src="/jackinthebox.png"/>
+                </div>
+                <div className="showcase-image-container">
+                  <img src="/starbucks.png"/>
+                </div>
+                <div className="showcase-image-container">
+                  <img src="/showcase1.png"/>
                 </div>
               </div>
             </div>

@@ -6,9 +6,8 @@ class Home extends React.Component {
     super(props)
     this.state = {
       hoveredItem: null,
-      imageCycle: 0,
-      nextImageNum: 1,
-      prevImageNum: 2
+      displayModal: false,
+      currentItem: ''
     }
   }
 
@@ -22,8 +21,21 @@ class Home extends React.Component {
     Router.push(`/${category}`)
   }
 
+  toggleModal = item => {
+    if (this.state.displayModal) {
+      this.setState({
+        displayModal: false,
+      })
+    } else {
+      this.setState({
+        displayModal: true,
+        currentItem: item
+      })
+    }
+  }
+
   render() {
-    const { hoveredItem, imageCycle, nextImageCycle } = this.state
+    const { currentItem, displayModal, hoveredItem } = this.state
 
     return (
       <React.Fragment>
@@ -33,6 +45,15 @@ class Home extends React.Component {
           <link href='https://fonts.googleapis.com/css?family=Sofia' rel='stylesheet'/>
           <script src="https://kit.fontawesome.com/ca7ff47d1e.js" crossOrigin="anonymous"/>
         </Head>
+        <div className={`modal-escape ${displayModal ? '' : 'hidden'}`} onClick={this.toggleModal} />     
+        <div className={`modal-wrapper ${displayModal ? '' : 'hidden'}`}>
+          <div className="modal-container">
+            <div className="modal-description">
+              <h1>{currentItem}</h1>
+            </div>
+            {/* <img src={currentItem.src}/> */}
+          </div>
+        </div>
         <div className="main-container">
           <header>
             <div className="title-container">
@@ -80,25 +101,25 @@ class Home extends React.Component {
             <a>Showcase</a>
             <div className="showcase">
               <div className="showcase-image-row">
-                <div className="showcase-image-container">
+                <div className="showcase-image-container" onClick={() => this.toggleModal("applebees")}>
                   <img src="/applebees.png"/>
                 </div>
-                <div className="showcase-image-container">
+                <div className="showcase-image-container" onClick={() => this.toggleModal("carlsjr")}>
                   <img src="/carlsjr.png"/>
                 </div>
-                <div className="showcase-image-container">
+                <div className="showcase-image-container" onClick={() => this.toggleModal("dennys")}>
                   <img src="/dennys.png"/>
                 </div>
               </div>
               <div className="showcase-image-row">
-                <div className="showcase-image-container">
+                <div className="showcase-image-container" onClick={() => this.toggleModal("jackinthebox")}>
                   <img src="/jackinthebox.png"/>
                 </div>
-                <div className="showcase-image-container">
+                <div className="showcase-image-container" onClick={() => this.toggleModal("starbucks")}>
                   <img src="/starbucks.png"/>
                 </div>
-                <div className="showcase-image-container">
-                  <img src="/showcase1.png"/>
+                <div className="showcase-image-container" onClick={() => this.toggleModal("showcase")}>
+                  <img src="/applebees.png"/>
                 </div>
               </div>
             </div>

@@ -1,0 +1,35 @@
+.item-wrapper {
+  display: flex;
+  flex-direction: row;
+  background-color: black;
+  width: calc(100% - 16rem);
+  height: 80vh;
+  padding: 8rem;
+
+  .category-sidebar {
+    display: flex;
+    flex-direction: column;
+    width: 15rem;
+    height: 100%;
+
+    .sidebar-item {
+      cursor: pointer;
+      color: white;
+      width: 10rem;
+      padding: 1rem;
+      background: #101010;
+      border: solid 1px black;
+      transition: all 0.5s ease;
+
+      &:hover {
+        border: solid 1px white;
+        background-color: #202020;
+      }
+    }
+  }
+
+  .item-container {
+    display: flex;
+    flex-direction: row;
+  }
+}

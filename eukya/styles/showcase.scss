@@ -62,11 +62,11 @@
         width: 33rem;
         opacity: 0;
         background-color: white;
-        transition: opacity 1s ease;
+        transition: opacity 0.5s ease;
       }
 
       .showcase-image-container:hover:before {
-        opacity: 0.5;
+        opacity: 0.3;
       }
     }
   }

@@ -31,5 +31,31 @@
   .item-container {
     display: flex;
     flex-direction: row;
+
+    .title{
+      color: white;
+      font-size: xx-large;
+      font-weight: 700;
+      align-self: top;
+      position: absolute;
+    }
+    .item{
+      cursor: pointer;
+      color: white;
+      padding-top: 4rem;
+      padding-right: 4rem;
+
+      img{
+        width: 15rem;
+        height: width;
+        z-index: 2;
+        object-fit: cover;
+        object-position: center;
+      }
+      
+      img:hover{
+        opacity: 0.5;
+      }
+    }
   }
 }

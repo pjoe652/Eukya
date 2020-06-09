@@ -20,7 +20,22 @@ class Restaurant extends React.Component {
               </div>
             </div>
             <div className="item-container">
-              Hello
+              <div className="title">
+                Chairs and Barstools
+              </div>
+              <div className="item">
+                <img src="/jackinthebox.png"/>
+              </div>
+              <div className="item">
+                <img src="/jackinthebox.png"/>
+              </div>
+              <div className="item">
+                <img src="/jackinthebox.png"/>
+              </div>
+              <div className="item">
+                <img src="/jackinthebox.png"/>
+              </div>
+              
             </div>
           </div>
         </div>

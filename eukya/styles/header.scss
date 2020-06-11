@@ -1,5 +1,7 @@
 header {
   position: fixed;
+  display: flex;
+  flex-direction: row;
   z-index: 100;
   left: 0;
   right: 0;
@@ -26,27 +28,27 @@ header {
         color: white;
       }
     }
+  }
 
-    .button-containers{
-      width: 100%;
-      display: flex;
-      justify-content: right;
-      align-items: baseline;
-      padding-right: 5rem;
-      padding-top: 1.5rem;
+  .button-containers{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: baseline;
+    padding-right: 5rem;
+    padding-top: 3rem;
 
-      .button{
-        color: white;
-        padding-left: 3rem;
-        font-size: 1.4rem;
-        cursor: pointer;
-        text-decoration: none;
-        opacity: 1;
-        transition: opacity 0.5s ease;
+    .button{
+      color: white;
+      padding-left: 3rem;
+      font-size: 1.4rem;
+      cursor: pointer;
+      text-decoration: none;
+      opacity: 1;
+      transition: opacity 0.5s ease;
 
-        &:hover{
-          opacity: 0.5;
-        }
+      &:hover{
+        opacity: 0.5;
       }
     }
   }

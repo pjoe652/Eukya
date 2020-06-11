@@ -11,18 +11,18 @@ const Header = () => (
           </a>
         </a>
       </Link>
-      <div className="button-containers">
-        <Link href= "/about">
-          <a className="button">
-            About Us
-          </a>
-        </Link>
-        <Link href= "/contact">
-          <a className="button">
-            Contact Us
-          </a>
-        </Link>
-      </div>
+    </div>
+    <div className="button-containers">
+      <Link href= "/about">
+        <a className="button">
+          About Us
+        </a>
+      </Link>
+      <Link href= "/contact">
+        <a className="button">
+          Contact Us
+        </a>
+      </Link>
     </div>
   </header>
 )

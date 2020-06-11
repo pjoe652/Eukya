@@ -1,7 +1,6 @@
 import Head from 'next/head'
 import HomePage from './home'
 import Router from 'next/router'
-import Restaurant from './restaurant'
 
 class Home extends React.Component {
   state = {

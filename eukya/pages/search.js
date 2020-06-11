@@ -1,12 +1,19 @@
 import Header from "./header"
-import { chairsAndBarstools } from '../constants/chairsAndBarstools'
+import Head from 'next/head'
+import { withRouter } from 'next/router'
+import { items } from '../constants/items'
 import { Desktop, Phone, DesktopLg, Tablet, TabletLand } from '../constants/screenWidth'
 
-class Restaurant extends React.Component {
+class Search extends React.Component {
+  static async getInitialProps() {
+    return {}
+  }
+
   constructor(props) {
     super(props)
     this.state = {
-      items: []
+      items: [],
+      category: ""
     }
   }
 
@@ -19,15 +26,17 @@ class Restaurant extends React.Component {
   }
 
   componentDidMount() {
-    this.updateShowcaseRow()
+    this.setState({
+      category: this.props.router.query.category
+    }, () => {
+      this.updateShowcaseRow()
+    })
   }
 
   updateShowcaseRow = () => {
     let itemsPerRow = 4
     let tempColumnItems = []
     let tempArray = []
-
-    console.log(window.innerWidth)
 
     if (window.innerWidth < Tablet) {
       itemsPerRow = 1
@@ -37,7 +46,9 @@ class Restaurant extends React.Component {
       itemsPerRow = 3
     }
 
-    chairsAndBarstools.forEach((item, index) => {
+    const itemCategory = items.filter(item => item.category === this.state.category)
+
+    itemCategory.forEach((item, index) => {
       let row = Math.floor(index/itemsPerRow)
       item.empty = false
       tempArray.push(item)
@@ -60,10 +71,12 @@ class Restaurant extends React.Component {
 
   render() {
     const { items } = this.state
-    console.log(items)
 
     return(
       <React.Fragment>
+        <Head>
+          <title>Eukya Furniture</title>
+        </Head>
         <div className="main-container">
           <Header/>
           <div className="item-wrapper">
@@ -88,7 +101,6 @@ class Restaurant extends React.Component {
                     <div key={`row-${cIndex}`} className="item-image-row">
                       {
                         row.map((item, index) => {
-                          console.log(item)
                           return(
                             <div key={`row-${cIndex} item-${index}`} className="item-image-container">
                               {
@@ -110,4 +122,4 @@ class Restaurant extends React.Component {
   }
 }
 
-export default Restaurant
+export default withRouter(Search)

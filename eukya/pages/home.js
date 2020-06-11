@@ -21,7 +21,10 @@ class HomePage extends React.Component {
   }
 
   onCategoryClick = category => {
-    Router.push(`/${category}`)
+    Router.push({
+      pathname: '/search',
+      query: { category: category }
+    })
   }
 
   toggleModal = item => {
@@ -89,40 +92,39 @@ class HomePage extends React.Component {
             <div className="modal-description">
               <h1>{currentItem}</h1>
             </div>
-            {/* <img src={currentItem.src}/> */}
           </div>
         </div>
         <div className="main-container">
           <Header/>
           <div className="catalogue-container">
             <div className="category" 
-              onClick={() => this.onCategoryClick('restaurant')}
-              onMouseEnter={() => this.onCategoryHover('restaurant')}
+              onClick={() => this.onCategoryClick('Restaurant')}
+              onMouseEnter={() => this.onCategoryHover('Restaurant')}
               onMouseLeave={() => this.onCategoryHover(null)}
               >
               <a>Chairs & Barstools</a>
               <div className="zoom-container">
-                <img className={`${hoveredItem === 'restaurant' ? 'selected' : ''}`} src="/restaurant.jpg"/>
+                <img className={`${hoveredItem === 'Restaurant' ? 'selected' : ''}`} src="/restaurant.jpg"/>
               </div>
             </div>
             <div className="category" 
-              onClick={() => this.onCategoryClick('hotel')}
-              onMouseEnter={() => this.onCategoryHover('hotel')}
+              onClick={() => this.onCategoryClick('Hotel')}
+              onMouseEnter={() => this.onCategoryHover('Hotel')}
               onMouseLeave={() => this.onCategoryHover(null)}
             >
               <a>Tables & Bases</a>
               <div className="zoom-container">
-                <img className={`${hoveredItem === 'hotel' ? 'selected' : ''}`} src="/hotel.jpg"/>
+                <img className={`${hoveredItem === 'Hotel' ? 'selected' : ''}`} src="/hotel.jpg"/>
               </div>
             </div>
             <div className="category" 
-              onClick={() => this.onCategoryClick('banquet')}
-              onMouseEnter={() => this.onCategoryHover('banquet')}
+              onClick={() => this.onCategoryClick('Banquet')}
+              onMouseEnter={() => this.onCategoryHover('Banquet')}
               onMouseLeave={() => this.onCategoryHover(null)}
             >
               <a>Booths</a>
               <div className="zoom-container">
-                <img className={`${hoveredItem === 'banquet' ? 'selected' : ''}`} src="/banquet.jpg"/>
+                <img className={`${hoveredItem === 'Banquet' ? 'selected' : ''}`} src="/banquet.jpg"/>
               </div>
             </div>
           </div>

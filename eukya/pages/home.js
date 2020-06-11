@@ -1,5 +1,7 @@
 import Router from 'next/router'
 import Header from './header'
+import { showcaseItems } from '../constants/showcase'
+import { Desktop, Phone } from '../constants/screenWidth'
 
 class HomePage extends React.Component {
   constructor(props) {
@@ -7,7 +9,8 @@ class HomePage extends React.Component {
     this.state = {
       hoveredItem: null,
       displayModal: false,
-      currentItem: ''
+      currentItem: '',
+      showcaseItems: []
     }
   }
 
@@ -34,8 +37,49 @@ class HomePage extends React.Component {
     }
   }
 
+  componentDidUpdate() {
+    window.addEventListener('resize', this.updateShowcaseRow)
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.updateShowcaseRow)
+  }
+
+  componentDidMount() {
+    this.updateShowcaseRow()
+  }
+
+  updateShowcaseRow = () => {
+    let showcasePerRow = 3
+    let tempColumnItems = []
+    let tempArray = []
+
+    if (window.innerWidth < Desktop) {
+      showcasePerRow = 2
+    } else if (window.innerWidth < Phone) {
+      showcasePerRow = 1
+    } else {
+      showcasePerRow = 3
+    }
+
+    showcaseItems.forEach((item, index) => {
+      let row = Math.floor(index/showcasePerRow)
+      tempArray.push(item)
+      if (tempArray.length === showcasePerRow) {
+        tempColumnItems.push(tempArray)
+        tempArray = []
+      }
+    })
+
+    tempColumnItems.push(tempArray)
+
+    this.setState({
+      showcaseItems: tempColumnItems
+    })
+  }
+
   render() {
-    const { currentItem, displayModal, hoveredItem } = this.state
+    const { currentItem, displayModal, hoveredItem, showcaseItems } = this.state
 
     return(
       <React.Fragment>
@@ -85,28 +129,23 @@ class HomePage extends React.Component {
           <div className="showcase-container">
             <a>Showcase</a>
             <div className="showcase">
-              <div className="showcase-image-row">
-                <div className="showcase-image-container" onClick={() => this.toggleModal("applebees")}>
-                  <img src="/applebees.png"/>
-                </div>
-                <div className="showcase-image-container" onClick={() => this.toggleModal("carlsjr")}>
-                  <img src="/carlsjr.png"/>
-                </div>
-                <div className="showcase-image-container" onClick={() => this.toggleModal("dennys")}>
-                  <img src="/dennys.png"/>
-                </div>
-              </div>
-              <div className="showcase-image-row">
-                <div className="showcase-image-container" onClick={() => this.toggleModal("jackinthebox")}>
-                  <img src="/jackinthebox.png"/>
-                </div>
-                <div className="showcase-image-container" onClick={() => this.toggleModal("starbucks")}>
-                  <img src="/starbucks.png"/>
-                </div>
-                <div className="showcase-image-container" onClick={() => this.toggleModal("showcase")}>
-                  <img src="/applebees.png"/>
-                </div>
-              </div>
+              {
+                showcaseItems.map((row, cIndex) => {
+                  return(
+                    <div key={`row-${cIndex}`} className="showcase-image-row">
+                      {
+                        row.map((item, index) => {
+                          return(
+                            <div key={`row-${cIndex} item-${index}`} className="showcase-image-container" onClick={() => this.toggleModal(item.name)}>
+                              <img src={item.logo}/>
+                            </div>
+                          )
+                        })
+                      }
+                    </div>
+                  )
+                })
+              }
             </div>
           </div>
         </div>

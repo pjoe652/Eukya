@@ -1,0 +1,29 @@
+.about-container {
+    display: flex;
+    height: 80vh;
+    padding-top: 8rem;
+    padding-right: 10rem;
+    padding-left: 10rem;
+    background-color: black;
+    flex-direction: column;
+
+    .title{
+        display: flex;
+        font-size: 3rem;
+        font-weight: bold;
+        justify-content: left;
+        color: white;
+        padding-bottom: 4rem;
+        padding-top: 1rem;
+    }
+
+    a {
+        display: flex;
+        font-size: 1.4rem;
+        font-weight: lighter;
+        justify-content: center;
+        color: white;
+        padding-bottom: 1rem;
+    }
+}
+

@@ -9,20 +9,45 @@ header {
   .title-container {
     width: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: left;
     align-items: baseline;
     padding-top: 1.5rem;
+    padding-left: 3rem;
 
     .title {
+      cursor: pointer;
       font-size: 3rem;
       color: white;
       font-weight: bolder;
+      text-decoration: none;
+      .subcase {
+        font-size: 1.5rem;
+        font-weight: lighter;
+        color: white;
+      }
     }
-  
-    .subcase {
-      font-size: 1.5rem;
-      font-weight: lighter;
-      color: white;
+
+    .button-containers{
+      width: 100%;
+      display: flex;
+      justify-content: right;
+      align-items: baseline;
+      padding-right: 5rem;
+      padding-top: 1.5rem;
+
+      .button{
+        color: white;
+        padding-left: 3rem;
+        font-size: 1.4rem;
+        cursor: pointer;
+        text-decoration: none;
+        opacity: 1;
+        transition: opacity 0.5s ease;
+
+        &:hover{
+          opacity: 0.5;
+        }
+      }
     }
   }
 }

@@ -51,10 +51,10 @@
         z-index: 2;
         object-fit: cover;
         object-position: center;
-      }
-      
-      img:hover{
-        opacity: 0.5;
+
+        &:hover{
+          opacity: 0.5;
+        }
       }
     }
   }

@@ -1,7 +1,13 @@
 import Link from 'next/link'
 
-const Header = () => (
+const Header = (mobileView) => (
   <header>
+    {
+      mobileView &&
+        <div className="dropdown-button">
+          hello
+        </div>
+    }
     <div className="title-container">
       <Link href= "/">
         <a className="title">
@@ -12,18 +18,22 @@ const Header = () => (
         </a>
       </Link>
     </div>
-    <div className="button-containers">
-      <Link href= "/about">
-        <a className="button">
-          About Us
-        </a>
-      </Link>
-      <Link href= "/contact">
-        <a className="button">
-          Contact Us
-        </a>
-      </Link>
-    </div>
+    {
+      !mobileView &&
+        <div className="button-containers">
+          <Link href= "/about">
+            <a className="button">
+              About Us
+            </a>
+          </Link>
+          <Link href= "/contact">
+            <a className="button">
+              Contact Us
+            </a>
+          </Link>
+        </div>
+    }
+
   </header>
 )
 

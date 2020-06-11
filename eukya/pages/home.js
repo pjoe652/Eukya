@@ -1,7 +1,7 @@
 import Router from 'next/router'
 import Header from './header'
 import { showcaseItems } from '../constants/showcase'
-import { Desktop, Phone } from '../constants/screenWidth'
+import { Desktop, Phone, TabletLand } from '../constants/screenWidth'
 
 class HomePage extends React.Component {
   constructor(props) {
@@ -10,7 +10,8 @@ class HomePage extends React.Component {
       hoveredItem: null,
       displayModal: false,
       currentItem: '',
-      showcaseItems: []
+      showcaseItems: [],
+      mobileView: false
     }
   }
 
@@ -42,14 +43,29 @@ class HomePage extends React.Component {
 
   componentDidUpdate() {
     window.addEventListener('resize', this.updateShowcaseRow)
+    window.addEventListener('resize', this.updateMobileView)
   }
 
   componentWillUnmount() {
     window.removeEventListener('resize', this.updateShowcaseRow)
+    window.addEventListener('resize', this.updateMobileView)
   }
 
   componentDidMount() {
     this.updateShowcaseRow()
+    this.updateMobileView()
+  }
+
+  updateMobileView = () => {
+    if (window.innerWidth < Phone) {
+      this.setState({
+        mobileView: true
+      })
+    } else {
+      this.setState({
+        mobileView: false
+      })
+    }
   }
 
   updateShowcaseRow = () => {
@@ -57,10 +73,8 @@ class HomePage extends React.Component {
     let tempColumnItems = []
     let tempArray = []
 
-    if (window.innerWidth < Desktop) {
+    if (window.innerWidth < TabletLand) {
       showcasePerRow = 2
-    } else if (window.innerWidth < Phone) {
-      showcasePerRow = 1
     } else {
       showcasePerRow = 3
     }
@@ -74,7 +88,9 @@ class HomePage extends React.Component {
       }
     })
 
-    tempColumnItems.push(tempArray)
+    if(tempArray.length !== 0) {
+      tempColumnItems.push(tempArray)
+    }
 
     this.setState({
       showcaseItems: tempColumnItems
@@ -82,7 +98,7 @@ class HomePage extends React.Component {
   }
 
   render() {
-    const { currentItem, displayModal, hoveredItem, showcaseItems } = this.state
+    const { currentItem, displayModal, hoveredItem, showcaseItems, mobileView } = this.state
 
     return(
       <React.Fragment>
@@ -95,7 +111,7 @@ class HomePage extends React.Component {
           </div>
         </div>
         <div className="main-container">
-          <Header/>
+          <Header mobileView={mobileView}/>
           <div className="catalogue-container">
             <div className="category" 
               onClick={() => this.onCategoryClick('Restaurant')}

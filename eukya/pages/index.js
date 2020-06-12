@@ -1,4 +1,3 @@
-import Head from 'next/head'
 import HomePage from './home'
 import Router from 'next/router'
 
@@ -26,12 +25,6 @@ class Home extends React.Component {
 
     return (
       <React.Fragment>
-        <Head>
-          <title>Eukya Furniture</title>
-          <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-          <link href='https://fonts.googleapis.com/css?family=Sofia' rel='stylesheet'/>
-          <script src="https://kit.fontawesome.com/ca7ff47d1e.js" crossOrigin="anonymous"/>
-        </Head>
         <HomePage/>
       </React.Fragment>
     )

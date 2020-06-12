@@ -100,6 +100,7 @@ class HomePage extends React.Component {
   render() {
     const { currentItem, displayModal, hoveredItem, showcaseItems, mobileView } = this.state
 
+    console.log(mobileView)
     return(
       <React.Fragment>
         <div className={`modal-escape ${displayModal ? '' : 'hidden'}`} onClick={this.toggleModal} />     

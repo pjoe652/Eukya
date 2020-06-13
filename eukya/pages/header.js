@@ -1,28 +1,61 @@
 import Link from 'next/link'
+import React from 'react'
 
 class Header extends React.Component {
   state = {
-    displayModal: false
+    displayMobileMenu: false
   }
 
-  onDropdownClick() {
-    if (this.state.displayModal) {
+  onDropdownClick = () => {
+    const { displayMobileMenu } = this.state
+    const { closeModal = null } = this.props
+
+    if (displayMobileMenu) {
       this.setState({
-        displayModal: false
+        displayMobileMenu: false,
+        displayModal: false,
+      }, () => {
+        this.closeMobileMenu()
+        if (closeModal !== null) {
+          closeModal()
+        }
       })
     } else {
       this.setState({
-        displayModal: true
+        displayMobileMenu: true,
+        displayModal: false,
+      }, () => {
+        this.openMobileMenu()
+        if (closeModal !== null) {
+          closeModal()
+        }
       })
     }
   }
 
+  openMobileMenu = () => {
+    document.body.style.top = `-${window.scrollY}px`;
+    document.body.style.overflowY = "hidden"
+  }
+
+  closeMobileMenu = () => {
+    const scrollY = document.body.style.top;
+    document.body.style.top = '';
+    document.body.style.overflowY = ''
+    window.scrollTo(0, parseInt(scrollY || '0') * -1);
+    this.setState({
+      displayMobileMenu: false
+    })
+  }
+
   render() {
+    const { displayMobileMenu } = this.state
+
     return (
       <React.Fragment>
         <header>
-          <div className="dropdown-button" onClick={this.onDropdownClick}>
-            <i className="fas fa-caret-down"/>
+          <div className="dropdown-button">
+            <i className={`fas fa-caret-down ${displayMobileMenu ? 'flip' : ''}`} onClick={this.onDropdownClick}/>
           </div>
           <div className="title-container">
             <Link href= "/">
@@ -49,8 +82,23 @@ class Header extends React.Component {
             </Link>
           </div>
         </header>
-        <div className="dropdown-bar">
-          Hello
+        <div className={`dropdown-bar ${displayMobileMenu ? 'open' : ''}`}>
+          <div className="dropdown-options">
+            <div className="link-container"> 
+              <Link href= "/about">
+                <a>
+                  About Us
+                </a>
+              </Link>
+            </div>
+            <div className="link-container"> 
+              <Link href= "/contact">
+                <a>
+                  Contact Us
+                </a>
+              </Link>
+            </div>
+          </div>
         </div>
       </React.Fragment>
     )

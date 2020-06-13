@@ -1,7 +1,7 @@
 import Router from 'next/router'
-import Header from './header'
+import { Phone, TabletLand } from '../constants/screenWidth'
 import { showcaseItems } from '../constants/showcase'
-import { Desktop, Phone, TabletLand } from '../constants/screenWidth'
+import Header from './header'
 
 class HomePage extends React.Component {
   constructor(props) {
@@ -11,7 +11,7 @@ class HomePage extends React.Component {
       displayModal: false,
       currentItem: '',
       showcaseItems: [],
-      mobileView: false
+      mobileView: false,
     }
   }
 
@@ -41,6 +41,12 @@ class HomePage extends React.Component {
     }
   }
 
+  closeModal = () => {
+    this.setState({
+      displayModal: false
+    })
+  }
+
   componentDidUpdate() {
     window.addEventListener('resize', this.updateShowcaseRow)
     window.addEventListener('resize', this.updateMobileView)
@@ -65,6 +71,7 @@ class HomePage extends React.Component {
       this.setState({
         mobileView: false
       })
+      this.closeMobileMenu()
     }
   }
 
@@ -98,9 +105,8 @@ class HomePage extends React.Component {
   }
 
   render() {
-    const { currentItem, displayModal, hoveredItem, showcaseItems, mobileView } = this.state
+    const { currentItem, displayModal, hoveredItem, showcaseItems } = this.state
 
-    console.log(mobileView)
     return(
       <React.Fragment>
         <div className={`modal-escape ${displayModal ? '' : 'hidden'}`} onClick={this.toggleModal} />     
@@ -112,7 +118,7 @@ class HomePage extends React.Component {
           </div>
         </div>
         <div className="main-container">
-          <Header mobileView={mobileView}/>
+          <Header closeModal={this.closeModal}/>
           <div className="catalogue-container">
             <div className="category" 
               onClick={() => this.onCategoryClick('Restaurant')}

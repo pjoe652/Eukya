@@ -10,8 +10,7 @@ class HomePage extends React.Component {
       hoveredItem: null,
       displayModal: false,
       currentItem: '',
-      showcaseItems: [],
-      mobileView: false,
+      showcaseItems: []
     }
   }
 
@@ -49,30 +48,14 @@ class HomePage extends React.Component {
 
   componentDidUpdate() {
     window.addEventListener('resize', this.updateShowcaseRow)
-    window.addEventListener('resize', this.updateMobileView)
   }
 
   componentWillUnmount() {
     window.removeEventListener('resize', this.updateShowcaseRow)
-    window.addEventListener('resize', this.updateMobileView)
   }
 
   componentDidMount() {
     this.updateShowcaseRow()
-    this.updateMobileView()
-  }
-
-  updateMobileView = () => {
-    if (window.innerWidth < Phone) {
-      this.setState({
-        mobileView: true
-      })
-    } else {
-      this.setState({
-        mobileView: false
-      })
-      this.closeMobileMenu()
-    }
   }
 
   updateShowcaseRow = () => {

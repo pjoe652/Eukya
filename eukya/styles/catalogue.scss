@@ -35,6 +35,10 @@
       @media screen and (max-width: $tablet-land) {
         width: 100%;
       }
+
+      @media screen and (max-width: $phone) {
+        font-size: xx-large;
+      }
     }
 
     .zoom-container {

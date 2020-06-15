@@ -1,0 +1,70 @@
+.footer {
+  display: flex;
+  flex-direction: column;
+  border-top: solid 1px white;
+  background-color: #0d0d0d;
+  color: white;
+  height: 100%;
+  width: 100%;
+
+  @media screen and (min-width: $phone) {
+    flex-direction: row;
+  }
+
+  .title-container {
+    display: flex;
+    justify-content: left;
+    align-items: baseline;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    margin-left: 3rem;
+
+    @media screen and (max-width: $phone) {
+      margin-left: unset;
+      justify-content: center;
+      margin-top: 0.5rem;
+      margin-bottom: 0;
+      width: 100%;
+    }
+
+    .title-clickable {
+      cursor: pointer;
+
+      .title {
+        font-size: 3rem;
+        color: white;
+        font-weight: bolder;
+        text-decoration: none;
+  
+        @media screen and (max-width: $phone) {
+          font-size: 2rem;
+        }
+      }
+  
+      .subcase {
+        font-size: 1.5rem;
+        font-weight: lighter;
+        color: white;
+        text-decoration: none;
+  
+        @media screen and (max-width: $phone) {
+          font-size: 1rem;
+        }
+      }
+    }
+  }
+
+  .copyright {
+    display: flex;
+    justify-content: center;
+    font-size: x-small;
+    text-align: center;
+    padding: 1.6rem;
+    align-self: flex-end;
+
+    @media screen and (max-width: $phone) {
+      padding: 0.5rem 1rem 1rem 1rem;
+      align-self: unset;
+    }
+  }
+}

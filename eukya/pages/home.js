@@ -1,7 +1,8 @@
 import Router from 'next/router'
 import { Phone, TabletLand } from '../constants/screenWidth'
 import { showcaseItems } from '../constants/showcase'
-import Header from './header'
+import Header from '../components/header'
+import Footer from '../components/footer'
 
 class HomePage extends React.Component {
   constructor(props) {
@@ -157,6 +158,7 @@ class HomePage extends React.Component {
             </div>
           </div>
         </div>
+        <Footer/>
       </React.Fragment>
     )
   }

@@ -1,8 +1,9 @@
-import Header from "./header"
+import Header from "../components/header"
 import Head from 'next/head'
 import { withRouter } from 'next/router'
 import { items } from '../constants/items'
 import { Desktop, Phone, DesktopLg, Tablet, TabletLand } from '../constants/screenWidth'
+import Footer from "../components/footer"
 
 class Search extends React.Component {
   static async getInitialProps() {
@@ -91,7 +92,7 @@ class Search extends React.Component {
                 Item 3
               </div>
             </div>
-            <div className="item-container">
+            <div className="category-container">
               <div className="title">
                 Chairs and Barstools
               </div>
@@ -102,9 +103,20 @@ class Search extends React.Component {
                       {
                         row.map((item, index) => {
                           return(
-                            <div key={`row-${cIndex} item-${index}`} className="item-image-container">
+                            <div className="item-container"> 
+                              <div key={`row-${cIndex} item-${index}`} className="item-image-container">
+                                {
+                                  !item.empty && <img src={item.src}/>
+                                }
+                              </div>
                               {
-                                !item.empty && <img src={item.src}/>
+                                !item.empty && 
+                                  <div className="item-description">
+                                    <a>{item.name}</a>
+                                    <div className="item-learn-more">
+                                      Learn more
+                                    </div>
+                                  </div>
                               }
                             </div>
                           )
@@ -117,6 +129,7 @@ class Search extends React.Component {
             </div>
           </div>
         </div>
+        <Footer/>
       </React.Fragment>
     )
   }

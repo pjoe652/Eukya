@@ -137,12 +137,13 @@ header {
       justify-content: center;
 
       a {
+        visibility: hidden;
         color: white;
         font-weight: lighter;
         font-size: x-large;
         text-decoration: none;
         opacity: 0;
-        transition: opacity 0.5s ease;
+        transition: all 0.5s ease;
         height: min-content;
       }
     }
@@ -154,6 +155,7 @@ header {
 
     .link-container {
       a {
+        visibility: visible;
         opacity: 1;
         transition: opacity 0.5s ease;
       }

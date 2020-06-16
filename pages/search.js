@@ -6,10 +6,6 @@ import { Desktop, Phone, DesktopLg, Tablet, TabletLand } from '../constants/scre
 import Footer from "../components/footer"
 
 class Search extends React.Component {
-  static async getInitialProps() {
-    return {}
-  }
-
   constructor(props) {
     super(props)
     this.state = {

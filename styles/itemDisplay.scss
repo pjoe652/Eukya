@@ -4,7 +4,7 @@
   background-color: black;
   width: calc(100% - 2rem);
   height: 100%;
-  min-height: calc(100vh - 22rem);
+  min-height: calc(100vh - 21.5rem);
   padding: 8rem 1rem 8rem 1rem;
 
   @media screen and (max-width: $tablet) {
@@ -12,6 +12,7 @@
   }
 
   .category-sidebar {
+    padding-top: 1rem;
     display: flex;
     flex-direction: column;
     width: 15rem;
@@ -44,20 +45,58 @@
   }
 
   .category-container {
+    padding-top: 1rem;
     padding-left: 1rem;
     display: flex;
     flex-direction: column;
     width: 100%;
 
-    .title {
+    @media screen and (max-width: $tablet) {
+      padding-left: unset;
+    }
+
+    .results {
+      padding-left: 1rem;
       color: white;
-      font-size: xx-large;
+      font-size: x-large;
       font-weight: 700;
 
       @media screen and (max-width: $tablet) {
         padding-left: unset;
         padding-top: 1rem;
         align-self: center;
+      }
+    }
+
+    form {
+      display: flex;
+      flex-direction: row;
+      padding: 1rem 0 1rem 1rem;
+
+      @media screen and (max-width: $tablet) {
+        padding-right: 1rem;
+      }
+
+      .search-input {
+        width: 50%;
+        height: 1.5rem;
+        background-color: black;
+        color: white;
+        border: solid 1px white;
+
+        @media screen and (max-width: $tablet) {
+          width: 100%;
+        }
+      }
+
+      button {
+        color: white;
+        border: solid 1px white;
+        display: flex;
+        padding: 0 1rem;
+        justify-content: center;
+        align-items: center;
+        background-color: black;
       }
     }
 

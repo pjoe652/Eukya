@@ -70,6 +70,11 @@ class Header extends React.Component {
             </Link>
           </div>
           <div className="button-containers">
+            <Link href= "/search">
+              <a className="button">
+                Furnitures
+              </a>
+            </Link>
             <Link href= "/about">
               <a className="button">
                 About Us
@@ -84,6 +89,13 @@ class Header extends React.Component {
         </header>
         <div className={`dropdown-bar ${displayMobileMenu ? 'open' : ''}`}>
           <div className="dropdown-options">
+            <div className="link-container"> 
+              <Link href= "/search">
+                <a>
+                  Furnitures
+                </a>
+              </Link>
+            </div>
             <div className="link-container"> 
               <Link href= "/about">
                 <a>

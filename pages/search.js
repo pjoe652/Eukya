@@ -10,7 +10,9 @@ class Search extends React.Component {
     super(props)
     this.state = {
       items: [],
-      category: ""
+      category: "",
+      searchInput: "",
+      search: ""
     }
   }
 
@@ -23,10 +25,24 @@ class Search extends React.Component {
   }
 
   componentDidMount() {
+    const query = this.props.router.asPath.split('=', 2)
+
     this.setState({
-      category: this.props.router.query.category
+      search: !!query ? query[1] : query[0]
     }, () => {
       this.updateShowcaseRow()
+    })
+  }
+
+  updateSearch = e => {
+    this.setState({
+      searchInput: e.target.value
+    })
+  }
+
+  confirmSearch() {
+    this.setState({
+      search: this.state.searchInput
     })
   }
 
@@ -43,7 +59,7 @@ class Search extends React.Component {
       itemsPerRow = 3
     }
 
-    const itemCategory = items.filter(item => item.category === this.state.category)
+    const itemCategory = items.filter(item => item.category === this.state.search)
 
     itemCategory.forEach((item, index) => {
       let row = Math.floor(index/itemsPerRow)
@@ -67,7 +83,8 @@ class Search extends React.Component {
   }
 
   render() {
-    const { items } = this.state
+    const { items, search, searchInput } = this.state
+    console.log(searchInput)
 
     return(
       <React.Fragment>
@@ -89,8 +106,14 @@ class Search extends React.Component {
               </div>
             </div>
             <div className="category-container">
-              <div className="title">
-                Chairs and Barstools
+              <div className="search-bar">
+                <form onSubmit={this.updateSearch}>
+                  <input className="search-input" placeholder="Search" name="search" onChange={this.updateSearch}/>
+                  <button className="fas fa-search"/>
+                </form>
+              </div>
+              <div className="results">
+                {`Search Results for "${search}"`}
               </div>
               {
                 items.map((row, cIndex) => {

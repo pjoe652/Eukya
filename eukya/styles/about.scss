@@ -17,13 +17,35 @@
         padding-top: 1rem;
     }
 
-    a {
+    .scnd-container{
         display: flex;
-        font-size: 1.4rem;
-        font-weight: lighter;
-        justify-content: center;
-        color: white;
-        padding-bottom: 1rem;
+        flex-direction: row;
+        .third-container{
+            padding-right: 5rem;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+
+            .fifth-container{
+                display: flex;
+            }
+        }
+        .fourth-container{
+            flex-direction: column;
+            display: flex;
+        }
+
+        a {
+            display: flex;
+            font-size: 1.4rem;
+            font-weight: lighter;
+            justify-content: center;
+            color: white;
+            padding-bottom: 1rem;
+        }
     }
+
+
+
 }
 

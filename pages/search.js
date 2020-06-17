@@ -6,15 +6,14 @@ import { Desktop, Phone, DesktopLg, Tablet, TabletLand } from '../constants/scre
 import Footer from "../components/footer"
 
 class Search extends React.Component {
-  static async getInitialProps() {
-    return {}
-  }
-
   constructor(props) {
     super(props)
     this.state = {
       items: [],
-      category: ""
+      category: "",
+      searchInput: "",
+      search: "",
+      displaySearch:""
     }
   }
 
@@ -27,10 +26,24 @@ class Search extends React.Component {
   }
 
   componentDidMount() {
+    const query = this.props.router.asPath.split('=', 2)
+
     this.setState({
-      category: this.props.router.query.category
+      search: !!query ? query[1] : query[0]
     }, () => {
       this.updateShowcaseRow()
+    })
+  }
+
+  updateSearch = e => {
+    this.setState({
+      searchInput: e.target.value
+    })
+  }
+
+  confirmSearch = e => {
+    this.setState({
+      search: this.state.searchInput
     })
   }
 
@@ -47,10 +60,11 @@ class Search extends React.Component {
       itemsPerRow = 3
     }
 
-    const itemCategory = items.filter(item => item.category === this.state.category)
+    const searchQuery = this.state.search.replace('+', ' ')
+
+    const itemCategory = items.filter(item => (item.category === searchQuery || item.name.includes(searchQuery)))
 
     itemCategory.forEach((item, index) => {
-      let row = Math.floor(index/itemsPerRow)
       item.empty = false
       tempArray.push(item)
       if (tempArray.length === itemsPerRow) {
@@ -66,12 +80,13 @@ class Search extends React.Component {
     tempColumnItems.push(tempArray)
 
     this.setState({
-      items: tempColumnItems
+      items: tempColumnItems,
+      displaySearch: searchQuery
     })
   }
 
   render() {
-    const { items } = this.state
+    const { displaySearch, items, search } = this.state
 
     return(
       <React.Fragment>
@@ -93,8 +108,14 @@ class Search extends React.Component {
               </div>
             </div>
             <div className="category-container">
-              <div className="title">
-                Chairs and Barstools
+              <div className="search-bar">
+                <form onSubmit={this.updateSearch}>
+                  <input className="search-input" placeholder="Search" name="search" onChange={this.updateSearch}/>
+                  <button className="fas fa-search"/>
+                </form>
+              </div>
+              <div className="results">
+                { !!search ? `Search Results for "${displaySearch}"` : "" }
               </div>
               {
                 items.map((row, cIndex) => {

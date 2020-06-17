@@ -6,7 +6,7 @@ header {
   left: 0;
   right: 0;
   height: 8rem;
-  background-color:black;
+  background-color:#0d0d0d;
 
   @media screen and (max-width: $phone) {
     height: 6rem;
@@ -62,13 +62,13 @@ header {
     padding-right: 5rem;
     padding-top: 3rem;
 
-    @media screen and (max-width: $phone) {
+    @media screen and (max-width: $tablet) {
       display: none;
     }
 
     .button {
       color: white;
-      padding-left: 3rem;
+      padding-left: 2.5rem;
       font-size: 1.4rem;
       cursor: pointer;
       text-decoration: none;
@@ -99,13 +99,14 @@ header {
       align-items: center;
       z-index: 1;
       transition: transform 0.5s ease;
+      cursor: pointer;
 
       &.flip {
         transform: scaleY(-1);
       }
     }
 
-    @media screen and (min-width: $phone){
+    @media screen and (min-width: $tablet){
       display: none;
     }
   }
@@ -137,12 +138,13 @@ header {
       justify-content: center;
 
       a {
+        visibility: hidden;
         color: white;
         font-weight: lighter;
         font-size: x-large;
         text-decoration: none;
         opacity: 0;
-        transition: opacity 0.5s ease;
+        transition: all 0.5s ease;
         height: min-content;
       }
     }
@@ -154,6 +156,7 @@ header {
 
     .link-container {
       a {
+        visibility: visible;
         opacity: 1;
         transition: opacity 0.5s ease;
       }

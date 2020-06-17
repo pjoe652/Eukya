@@ -12,7 +12,8 @@ class Search extends React.Component {
       items: [],
       category: "",
       searchInput: "",
-      search: ""
+      search: "",
+      displaySearch:""
     }
   }
 
@@ -40,7 +41,7 @@ class Search extends React.Component {
     })
   }
 
-  confirmSearch() {
+  confirmSearch = e => {
     this.setState({
       search: this.state.searchInput
     })
@@ -59,10 +60,11 @@ class Search extends React.Component {
       itemsPerRow = 3
     }
 
-    const itemCategory = items.filter(item => item.category === this.state.search)
+    const searchQuery = this.state.search.replace('+', ' ')
+
+    const itemCategory = items.filter(item => (item.category === searchQuery || item.name.includes(searchQuery)))
 
     itemCategory.forEach((item, index) => {
-      let row = Math.floor(index/itemsPerRow)
       item.empty = false
       tempArray.push(item)
       if (tempArray.length === itemsPerRow) {
@@ -78,13 +80,13 @@ class Search extends React.Component {
     tempColumnItems.push(tempArray)
 
     this.setState({
-      items: tempColumnItems
+      items: tempColumnItems,
+      displaySearch: searchQuery
     })
   }
 
   render() {
-    const { items, search, searchInput } = this.state
-    console.log(searchInput)
+    const { displaySearch, items, search } = this.state
 
     return(
       <React.Fragment>
@@ -113,7 +115,7 @@ class Search extends React.Component {
                 </form>
               </div>
               <div className="results">
-                {`Search Results for "${search}"`}
+                { !!search ? `Search Results for "${displaySearch}"` : "" }
               </div>
               {
                 items.map((row, cIndex) => {

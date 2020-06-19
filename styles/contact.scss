@@ -37,7 +37,13 @@
         font-weight: lighter;
         color: black;
         justify-content: center;
-        padding-top: 3rem;
+        padding-top: 1rem;
+        margin: 1rem;
+
+        @media screen and (max-width: $tablet-land) {
+            margin-left: 4rem;
+            margin-right: 4rem;
+        }
 
         a{
             display: flex;
@@ -63,8 +69,10 @@
             width: 50%;
             padding-top: 3rem;
             justify-content: left;
+            align-self: center;
 
             @media screen and (max-width: $tablet-land) {
+                padding: 1rem;
                 width: 80%;
             }
 
@@ -73,6 +81,7 @@
                 padding:0.3rem;
                 background-color: #141414;
                 border-color: darkgrey;
+                font-size: 0.9rem;
             }
 
             .button{
@@ -88,6 +97,12 @@
             .biginput{
                 height: 10rem;
                 align-content: flex-start;
+                background-color: #141414;
+                color: white;
+                padding: 0.5rem;
+                resize: none;
+                font-family: Segoe UI;
+                font-size: 1rem;
 
             }
 
@@ -106,9 +121,13 @@
             flex-direction: row;
             width: 50%;
             padding-top: 3rem;
+            align-self: center;
 
             @media screen and (max-width: $tablet-land) {
+                padding: 1rem;
                 width: 80%;
+                padding-top: 3rem;
+                padding-bottom: 3rem;
             }
             
             .icons{
@@ -124,11 +143,19 @@
                 border-style: solid;
                 align-items: flex-end;
                 padding-right: 3rem;
+
+                @media screen and (max-width: $tablet-land) {
+                    padding-right: 2rem;
+                }
             }
 
             .info{
                 .onething{
                     padding-bottom: 4rem;
+                    
+                    @media screen and (max-width: $tablet-land) {
+                        padding-bottom: 2rem;
+                    }
                 }
                 a{
                     padding-left: 3rem;
@@ -137,6 +164,13 @@
                     font-weight: lighter;
                     color: white;
                     justify-content: center;
+
+                    @media screen and (max-width: $tablet-land) {
+                        font-size: 1.2rem;
+                        padding-left: 2rem;
+                    }
+
+                    
                 }
             }
         }

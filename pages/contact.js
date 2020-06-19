@@ -24,7 +24,7 @@ class Contact extends React.Component {
                   <a> Email </a>
                   <input type="text"/>
                   <a> Message </a>
-                  <input className="biginput" type="text"/>
+                  <textarea className="biginput" type="text"/>
                   <a></a>
                   <input type="button" className="button" value="Submit"/>
               </div>

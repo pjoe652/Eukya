@@ -1,0 +1,145 @@
+.contact-container {
+    display: flex;
+    padding-top: 8rem;
+    min-height: calc(100vh - 14.05rem);
+    background-color: black;
+    flex-direction: column;
+
+    .coverimage {
+        position: relative;
+        height: 15rem;
+        overflow: hidden;
+  
+        img {
+          width: 100%;
+          height: 15rem;
+          object-fit: cover;
+          object-position: center;
+          opacity: 0.3;
+        }
+    }
+
+    .title{
+        display: flex;
+        font-size: 3rem;
+        justify-content: center;
+        color: white;
+        padding-top: 5.5rem;
+        padding-bottom: 2rem;
+        align-self: center;
+        position: absolute;
+        z-index: 1;
+    }
+
+    .description{
+        display: flex;
+        font-size: 2rem;
+        font-weight: lighter;
+        color: black;
+        justify-content: center;
+        padding-top: 3rem;
+
+        a{
+            display: flex;
+            font-size: 1.6rem;
+            font-weight: lighter;
+            color: white;
+        }
+    }
+
+    .twothings{
+        display:flex;
+        flex-direction: row;
+        justify-content: center;
+
+        @media screen and (max-width: $tablet-land) {
+            flex-direction: column;
+        }
+
+        .contactinfo{
+            padding: 5rem;
+            display: flex;
+            flex-direction: column;
+            width: 50%;
+            padding-top: 3rem;
+            justify-content: left;
+
+            @media screen and (max-width: $tablet-land) {
+                width: 80%;
+            }
+
+            input{
+                color: white;
+                padding:0.3rem;
+                background-color: #141414;
+                border-color: darkgrey;
+            }
+
+            .button{
+                align-self: center;
+                width: 50%;
+                transition: opacity 0.5s ease;
+
+                &:hover{
+                  opacity: 0.5;
+                }
+            }
+
+            .biginput{
+                height: 10rem;
+                align-content: flex-start;
+
+            }
+
+            a{
+                display: flex;
+                font-size: 1.2rem;
+                font-weight: lighter;
+                color: white;
+                padding: 0.5rem;
+            }
+        }
+        
+        .map{
+            padding: 5rem;
+            display: flex;
+            flex-direction: row;
+            width: 50%;
+            padding-top: 3rem;
+
+            @media screen and (max-width: $tablet-land) {
+                width: 80%;
+            }
+            
+            .icons{
+                width: 20%;
+                color: white;
+                display: flex;
+                flex-direction: column;
+                padding-top: 0.8rem;
+                font-size: 2rem;
+                border-top-color: black;
+                border-bottom-color: black;
+                border-left-color: black;
+                border-style: solid;
+                align-items: flex-end;
+                padding-right: 3rem;
+            }
+
+            .info{
+                .onething{
+                    padding-bottom: 4rem;
+                }
+                a{
+                    padding-left: 3rem;
+                    display: flex;
+                    font-size: 1.4rem;
+                    font-weight: lighter;
+                    color: white;
+                    justify-content: center;
+                }
+            }
+        }
+
+    }
+}
